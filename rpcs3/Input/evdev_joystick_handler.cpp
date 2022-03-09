@@ -602,7 +602,6 @@ std::vector<std::string> evdev_joystick_handler::ListDevices()
 				continue;
 			}
 			if (libevdev_has_event_type(dev, EV_KEY) &&
-				libevdev_has_event_type(dev, EV_ABS))
 			{
 				// It's a joystick.
 				std::string name = get_device_name(dev);
@@ -657,7 +656,6 @@ int evdev_joystick_handler::add_device(const std::string& device, const std::sha
 				name = fmt::format("%d. %s", ++unique_names[name], name);
 
 			if (libevdev_has_event_type(dev, EV_KEY) &&
-				libevdev_has_event_type(dev, EV_ABS) &&
 				name == device)
 			{
 				// It's a joystick. Now let's make sure we don't already have this one.
